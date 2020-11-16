@@ -171,7 +171,6 @@ class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
                   alignment: Alignment.bottomCenter,
                   children: <Widget>[
                     Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
                         Container(
                           child: FlareActor(
