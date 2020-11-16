@@ -253,7 +253,6 @@ class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
                     borderRadius: BorderRadius.circular(widget.borderRadius),
                   ),
                   alignment: Alignment.center,
-                  padding: EdgeInsets.all(10),
                   child: topCardWidget,
                 ),
               ],
