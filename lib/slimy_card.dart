@@ -170,26 +170,6 @@ class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
                 Stack(
                   alignment: Alignment.bottomCenter,
                   children: <Widget>[
-                    AnimatedContainer(
-                      duration: widget.duration,
-                      height: bottomDimension,
-                      curve: widget.curve,
-                      child: Container(
-                        clipBehavior: Clip.hardEdge,
-                        width: widget.width,
-                        decoration: BoxDecoration(
-                          color: widget.color,
-                          borderRadius:
-                              BorderRadius.circular(widget.borderRadius),
-                        ),
-                        alignment: Alignment.topCenter,
-                        child: AnimatedOpacity(
-                          duration: Duration(milliseconds: 100),
-                          opacity: (isSeperated) ? 1.0 : 0,
-                          child: bottomCardWidget,
-                        ),
-                      ),
-                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
@@ -216,6 +196,26 @@ class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
                         ),
                       ],
                     ),
+                    AnimatedContainer(
+                      duration: widget.duration,
+                      height: bottomDimension,
+                      curve: widget.curve,
+                      child: Container(
+                        clipBehavior: Clip.hardEdge,
+                        width: widget.width,
+                        decoration: BoxDecoration(
+                          color: widget.color,
+                          borderRadius:
+                              BorderRadius.circular(widget.borderRadius),
+                        ),
+                        alignment: Alignment.topCenter,
+                        child: AnimatedOpacity(
+                          duration: Duration(milliseconds: 100),
+                          opacity: (isSeperated) ? 1.0 : 0,
+                          child: bottomCardWidget,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ],
@@ -223,17 +223,6 @@ class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
             Stack(
               alignment: Alignment.topCenter,
               children: <Widget>[
-                Container(
-                  height: widget.topCardHeight,
-                  width: widget.width,
-                  decoration: BoxDecoration(
-                    color: widget.color,
-                    borderRadius: BorderRadius.circular(widget.borderRadius),
-                  ),
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.all(10),
-                  child: topCardWidget,
-                ),
                 Column(
                   children: <Widget>[
                     SizedBox(
@@ -255,6 +244,17 @@ class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
                       ),
                     )
                   ],
+                ),
+                Container(
+                  height: widget.topCardHeight,
+                  width: widget.width,
+                  decoration: BoxDecoration(
+                    color: widget.color,
+                    borderRadius: BorderRadius.circular(widget.borderRadius),
+                  ),
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(10),
+                  child: topCardWidget,
                 ),
               ],
             ),
