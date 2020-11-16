@@ -1,3 +1,15 @@
+**Fork changes:**
+- Removed opinionated paddings
+- Fixed animation (no flicker if bottomHeight != 100)
+- Fixed drawing order so clicks aren't obstructed by invisible animation object
+
+Number of commits summarized by this: 3 (check if accurate).
+
+**[Original project doesn't seem to be maintained anymore:](https://github.com/AkashDivya/SlimyCard-Animated-Flutter-Package/issues/7)**
+
+
+___
+
 # SlimyCard - Animated Flutter Package
 
 SlimyCard provides a beautiful slime-like animation of a Card that separates into two different Cards, one at the top and the another at bottom. It is possible to put any custom widget in these two separate cards.
