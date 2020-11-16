@@ -34,6 +34,8 @@ class SlimyCard extends StatefulWidget {
   final Widget topCardWidget;
   final Widget bottomCardWidget;
   final bool slimeEnabled;
+  final Curve curve;
+  final Duration duration;
 
   SlimyCard({
     this.color = const Color(0xff5858FF),
@@ -43,7 +45,9 @@ class SlimyCard extends StatefulWidget {
     this.borderRadius = 25,
     this.topCardWidget,
     this.bottomCardWidget,
+    this.curve = Curves.elasticOut,
     this.slimeEnabled = true,
+    this.duration = const Duration(milliseconds: 1800),
   })  : assert(topCardHeight >= 150, 'Height of Top Card must be atleast 150.'),
         assert(bottomCardHeight >= 100,
             'Height of Bottom Card must be atleast 100.'),
@@ -159,27 +163,31 @@ class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
             Column(
               children: <Widget>[
                 AnimatedContainer(
-                  duration: Duration(milliseconds: 1800),
+                  duration: widget.duration,
                   height: gap,
-                  curve: Curves.elasticOut,
+                  curve: widget.curve,
                 ),
                 Stack(
                   alignment: Alignment.bottomCenter,
                   children: <Widget>[
-                    Container(
+                    AnimatedContainer(
+                      duration: widget.duration,
                       height: bottomDimension,
-                      width: widget.width,
-                      decoration: BoxDecoration(
-                        color: widget.color,
-                        borderRadius:
-                            BorderRadius.circular(widget.borderRadius),
-                      ),
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.all(10),
-                      child: AnimatedOpacity(
-                        duration: Duration(milliseconds: 100),
-                        opacity: (isSeperated) ? 1.0 : 0,
-                        child: bottomCardWidget,
+                      curve: widget.curve,
+                      child: Container(
+                        clipBehavior: Clip.hardEdge,
+                        width: widget.width,
+                        decoration: BoxDecoration(
+                          color: widget.color,
+                          borderRadius:
+                              BorderRadius.circular(widget.borderRadius),
+                        ),
+                        alignment: Alignment.topCenter,
+                        child: AnimatedOpacity(
+                          duration: Duration(milliseconds: 100),
+                          opacity: (isSeperated) ? 1.0 : 0,
+                          child: bottomCardWidget,
+                        ),
                       ),
                     ),
                     Column(
@@ -198,8 +206,13 @@ class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
                           height: widget.width / 4,
                           width: widget.width,
                         ),
-                        SizedBox(
-                          height: bottomDimension - (x),
+                        AnimatedContainer(
+                          duration: widget.duration,
+                          height: bottomDimension - x,
+                          curve: widget.curve,
+                          child: Container(
+                            height: bottomDimension - x,
+                          ),
                         ),
                       ],
                     ),
