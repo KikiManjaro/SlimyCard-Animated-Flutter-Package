@@ -36,6 +36,7 @@ class SlimyCard extends StatefulWidget {
   final bool slimeEnabled;
   final Curve curve;
   final Duration duration;
+  final Icon icon;
 
   SlimyCard({
     this.color = const Color(0xff5858FF),
@@ -48,6 +49,7 @@ class SlimyCard extends StatefulWidget {
     this.curve = Curves.elasticOut,
     this.slimeEnabled = true,
     this.duration = const Duration(milliseconds: 1800),
+    this.icon = const Icon(Icons.keyboard_arrow_down, color: Colors.black),
   })  : assert(topCardHeight >= 150, 'Height of Top Card must be atleast 150.'),
         assert(bottomCardHeight >= 100,
             'Height of Bottom Card must be atleast 100.'),
@@ -266,9 +268,11 @@ class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
                 Container(
                   height: 50,
                   width: 50,
-                  child: RotationTransition(
-                    turns: arrowAnimation,
-                    child: Icon(Icons.keyboard_arrow_down, color: Colors.black),
+                  child: Center(
+                    child: RotationTransition(
+                      turns: arrowAnimation,
+                      child: widget.icon,
+                    ),
                   ),
                   decoration: BoxDecoration(
                     color: Colors.white,
