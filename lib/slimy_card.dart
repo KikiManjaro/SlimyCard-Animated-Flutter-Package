@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'dart:async';
 
+import 'package:flutter/rendering.dart';
+
 /// Global variable to access the status of the card.
 StatusBloc slimyCard = StatusBloc();
 
@@ -265,25 +267,28 @@ class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
                       ? (widget.topCardHeight - 2 * 50 / 3)
                       : 0,
                 ),
-                Container(
-                  height: 50,
-                  width: 50,
-                  child: Center(
-                    child: RotationTransition(
-                      turns: arrowAnimation,
-                      child: widget.icon,
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                        color: widget.color.withOpacity(0.3),
-                        blurRadius: 20,
-                        spreadRadius: 1,
+                MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    child: Center(
+                      child: RotationTransition(
+                        turns: arrowAnimation,
+                        child: widget.icon,
                       ),
-                    ],
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                          color: widget.color.withOpacity(0.3),
+                          blurRadius: 20,
+                          spreadRadius: 1,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
