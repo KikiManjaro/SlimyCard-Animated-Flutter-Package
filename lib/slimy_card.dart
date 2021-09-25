@@ -33,8 +33,8 @@ class SlimyCard extends StatefulWidget {
   final double topCardHeight;
   final double bottomCardHeight;
   final double borderRadius;
-  final Widget topCardWidget;
-  final Widget bottomCardWidget;
+  final Widget? topCardWidget;
+  final Widget? bottomCardWidget;
   final bool slimeEnabled;
   final Curve curve;
   final Duration duration;
@@ -64,22 +64,22 @@ class SlimyCard extends StatefulWidget {
 }
 
 class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
-  bool isSeperated;
+  late bool isSeperated;
 
-  double bottomDimension;
-  double initialBottomDimension;
-  double finalBottomDimension;
-  double gap;
-  double gapInitial;
-  double gapFinal;
-  double x;
-  double y;
-  String activeAnimation;
-  Widget topCardWidget;
-  Widget bottomCardWidget;
+  double? bottomDimension;
+  double? initialBottomDimension;
+  double? finalBottomDimension;
+  double? gap;
+  double? gapInitial;
+  double? gapFinal;
+  late double x;
+  late double y;
+  String? activeAnimation;
+  Widget? topCardWidget;
+  Widget? bottomCardWidget;
 
-  Animation<double> arrowAnimation;
-  AnimationController arrowAnimController;
+  late Animation<double> arrowAnimation;
+  late AnimationController arrowAnimController;
 
   /// `action` is the main function that triggers the process of separation of
   /// the cards and vice-versa.
@@ -191,10 +191,10 @@ class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
                         ),
                         AnimatedContainer(
                           duration: widget.duration,
-                          height: bottomDimension - x,
+                          height: bottomDimension! - x,
                           curve: widget.curve,
                           child: Container(
-                            height: bottomDimension - x,
+                            height: bottomDimension! - x,
                           ),
                         ),
                       ],
