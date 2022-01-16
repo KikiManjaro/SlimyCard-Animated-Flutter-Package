@@ -7,7 +7,29 @@ Number of commits summarized by this: 3 (check if accurate).
 
 **[Original project doesn't seem to be maintained anymore:](https://github.com/AkashDivya/SlimyCard-Animated-Flutter-Package/issues/7)**
 
+# How to install this forked package
 
+Add this to your flutter app's pubspec.yaml file:
+   
+  - **1. Depend on it**
+
+    Add this to your flutter app's pubspec.yaml file:
+    
+    ```
+    dependencies:
+      slimy_card:
+        git: https://github.com/CiriousJoker/SlimyCard-Animated-Flutter-Package
+    ```
+
+  - **2. Install it**
+    
+    You can install packages from the command line:
+
+    with Flutter:
+    
+    ```
+    $ flutter pub get
+    ```
 ___
 
 # SlimyCard - Animated Flutter Package
